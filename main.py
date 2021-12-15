@@ -85,7 +85,7 @@ def build_feed(url, service):
     for entry in entries:
         fe = fg.add_entry()
         fe.title(valid_xml(entry['_source']['title']))
-        fe.description(valid_xml(entry['_source']['description']))
+        fe.description(valid_xml(entry['_source'].get('description', '')))
         urls = entry['_source']['identifiers']
         link_url = osf_url(urls, service)
         fe.link(href=link_url)
